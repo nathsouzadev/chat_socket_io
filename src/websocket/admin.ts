@@ -1,6 +1,5 @@
 import { io } from "../http";
 import { ConnectionsService } from "../services/ConnectionsService";
-import { UsersService } from "../services/UsersService";
 import { MessagesService } from "../services/MessagesService";
 
 io.on("connect", async (socket) => {

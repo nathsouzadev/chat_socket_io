@@ -62,7 +62,7 @@ io.on("connect", (socket) => {
 
         const socket_id = socket.id
 
-        const { user_id } = await connectionsService.findBySocketID(socket.id);
+        const { user_id } = await connectionsService.findBySocketID(socket_id);
 
         const message = await messagesService.create({
             text,
@@ -74,4 +74,9 @@ io.on("connect", (socket) => {
             socket_id
         })
     })
+
+    socket.on("disconnect", async () => {
+        console.log(socket.id);
+        await connectionsService.deleteBySocketId(socket.id);
+      });
 })
